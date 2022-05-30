@@ -1,0 +1,32 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="bamboo-comment-box"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="bamboo-comment-box-resources" name="bamboo-comment-box Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="bamboo-comment-box.css" location="/css/bamboo-comment-box.css"/>
+        <resource type="download" name="bamboo-comment-box.js" location="/js/bamboo-comment-box.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>bamboo-comment-box</context>
+    </web-resource>
+
+    <web-panel key="jobresult-summary-right" location="jobresult.summary.right">
+        <resource name="view" type="freemarker" location="/jobresult-summary-right.ftl" />
+    </web-panel>
+
+    <web-panel key="chainresult-summary-right" location="chainresult.summary.right">
+        <resource name="view" type="freemarker" location="/chainresult-summary-right.ftl" />
+    </web-panel>
+
+</atlassian-plugin>

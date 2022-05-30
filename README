@@ -1,0 +1,23 @@
+# Bamboo chainresult location issue
+
+The purpose of this project is to demonstrate an issue in Atlassian Bamboo causing the chainresult.summary panels to dissapear whenever an app defines a web-panel with location chainresult.summary.right.
+
+The project was created using `atlas-create-bamboo-plugin` with the only notable changes being:
+
+- Updated Bamboo version to 8.2.0
+- Added two web panels to atlassian-plugin.xml
+- Added two freemarker templates to the root of the resources directory
+
+The web panels:
+
+```
+    <web-panel key="jobresult-summary-right" location="jobresult.summary.right">
+        <resource name="view" type="freemarker" location="/jobresult-summary-right.ftl" />
+    </web-panel>
+
+    <web-panel key="chainresult-summary-right" location="chainresult.summary.right">
+        <resource name="view" type="freemarker" location="/chainresult-summary-right.ftl" />
+    </web-panel>
+```
+
+Whenever the app is enabled, all the panels in the `chainresult.summary` location (notably the comment box) dissapear. They reapper once the app is disabled.
